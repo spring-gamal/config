@@ -1,1 +1,10 @@
-asdfasdfasd
+#host绑定，配置当前主机的ip地址
+network.host: 172.16.250.232
+#http监听端口
+http.port: 9220
+##过滤校验内存锁
+bootstrap.memory_lock: false
+bootstrap.system_call_filter: false
+##跨域设置，该两项主要为head配置
+http.cors.enabled: true
+http.cors.allow-origin: '*'
