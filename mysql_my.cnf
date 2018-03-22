@@ -1,12 +1,12 @@
 [client]
 port    = 3306
-socket  = /opt/mysql/mysql.sock
+socket  = /tmp/mysql.sock
 
 [mysqld]
 basedir = /usr/local/onesql5632
 datadir = /opt/mysql/data
 port    = 3306
-socket  = /opt/mysql/mysql.sock
+socket  = /tmp/mysql.sock
 skip_name_resolve = 1
 open_files_limit = 3072
 back_log = 103
