@@ -1,5 +1,5 @@
 #host绑定，配置当前主机的ip地址
-network.host: 172.16.250.232
+network.host: 127.0.0.1
 #http监听端口
 http.port: 9220
 ##过滤校验内存锁
