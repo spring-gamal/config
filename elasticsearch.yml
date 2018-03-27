@@ -13,14 +13,17 @@
 # ---------------------------------- Cluster -----------------------------------
 #
 # Use a descriptive name for your cluster:
-#
-#cluster.name: my-application
+
+#集群名称，集群内所有节点配置一致
+cluster.name: purcotton-es-test
+
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-#node.name: node-1
+#集群节点名称，仅做节点区分，日志跟踪(其它节点名称,如: es1-node-0, es1-node-1)
+node.name: es1-node-0
 #
 # Add custom attributes to the node:
 #
@@ -30,11 +33,13 @@
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-#path.data: /path/to/data
+#数据存储(地址需要更改)
+path.data: /opt/es/data
 #
 # Path to log files:
 #
-#path.logs: /path/to/logs
+#日志存储(地址需要更改)
+path.logs: /opt/es/logs
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -52,11 +57,13 @@
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
+#host绑定，配置当前主机的ip地址
 network.host: 0.0.0.0
 #
 # Set a custom port for HTTP:
 #
-#http.port: 9200
+#http监听端口(同一台机器,需要更改端口号,如9200,9210)
+http.port: 9220
 #
 # For more information, consult the network module documentation.
 #
@@ -86,3 +93,31 @@ network.host: 0.0.0.0
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+
+#master节点，默认true
+node.master: true
+
+#数据节点，默认true
+node.data: true
+
+node.ingest: true
+
+#集群相互发现，多台服务器逗号隔开，如["172.16.250.232","172.16.80.181"]
+discovery.zen.ping.unicast.hosts: ["172.16.250.232"]
+
+#集群内最小master配置，配置想为集群节点数/2+1个，防止脑裂
+discovery.zen.minimum_master_nodes: 2
+
+#单机允许最大节点数
+node.max_local_storage_nodes: 3
+
+##过滤校验内存锁
+bootstrap.memory_lock: false
+
+bootstrap.system_call_filter: false
+
+##跨越设置，该两项主要为head配置
+
+http.cors.enabled: true
+
+http.cors.allow-origin: '*'
